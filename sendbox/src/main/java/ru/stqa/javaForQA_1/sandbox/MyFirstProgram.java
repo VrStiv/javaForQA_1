@@ -5,10 +5,10 @@ public class MyFirstProgram {
   public static void main(String[] args) {
 
     //Координаты точек
-    double x1 = 2.6;
+    double x1 = 4;
     double y1 = 4;
-    double x2 = 6;
-    double y2 = 6.6;
+    double x2 = 8;
+    double y2 = 8;
 
     Point p1 = new Point(x1, y1);
     Point p2 = new Point(x2, y2);
