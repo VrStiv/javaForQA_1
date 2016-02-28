@@ -13,16 +13,15 @@ public class MyFirstProgram {
     Point p1 = new Point(x1, y1);
     Point p2 = new Point(x2, y2);
 
-
     System.out.println("");
     System.out.println("Bычисление расстояния между двумя точками при помощи функции:");
     System.out.println("Pасстояние между двумя точками (X=" + x1 + " Y=" + y1 + ") и (X=" + x2 + " Y=" + y2 + ") равно " + distance(p1, p2));
 
 
-    Point p = new Point(x1, y1, x2, y2);
+    Point p = new Point(p1, p2);
     System.out.println("");
     System.out.println("Bычисление расстояния между двумя точками при помощи метода в классе Point:");
-    System.out.println("Pасстояние между двумя точками (X=" + x1 + " Y=" + y1 + ") и (X=" + x2 + " Y=" + y2 + ") равно " + p.distanceObject());
+    System.out.println("Pасстояние между двумя точками (X=" + x1 + " Y=" + y1 + ") и (X=" + x2 + " Y=" + y2 + ") равно " + p.distanceObject(p1, p2));
 
   }
 
