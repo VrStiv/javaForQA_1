@@ -15,6 +15,7 @@ public class DistanceTests {
     Assert.assertEquals(p.distanceObject(p1, p2), 5.656854249492381);
   }
 
+
   @Test
   public void testArea2() {
     Point p = new Point(p1, p3);
