@@ -11,7 +11,7 @@ public class UserHelper extends HelperBase {
   }
 
   public void returnToMainPage() {
-    click(By.linkText("home page"));
+    click(By.linkText("home"));
   }
 
   public void submitForm() {
@@ -27,4 +27,15 @@ public class UserHelper extends HelperBase {
     type(By.name("address2"), userData.getAddressHome());
   }
 
+  public void initUserModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void deletionUser() {
+    click(By.xpath("//*[@id='content']/form[2]/input[2]"));
+  }
+
+  public void modificationUser() {
+    click(By.xpath("//*[@id='content']/form[1]/input[22]"));
+  }
 }
