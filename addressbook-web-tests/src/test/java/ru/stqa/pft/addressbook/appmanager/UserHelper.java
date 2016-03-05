@@ -2,7 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.myaddressbook.model.UserData;
+import ru.stqa.pft.addressbook.model.UserData;
 
 public class UserHelper extends HelperBase {
 

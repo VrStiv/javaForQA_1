@@ -18,27 +18,22 @@ public class UserData {
   }
 
   public String getFirstName() {
-
     return firstName;
   }
 
   public String getLastName() {
-
     return lastName;
   }
 
   public String getNickName() {
-
     return nickName;
   }
 
   public String getPhoneHome() {
-
     return phoneHome;
   }
 
-  public String getMailHome()
-  {
+  public String getMailHome() {
     return mailHome;
   }
 
