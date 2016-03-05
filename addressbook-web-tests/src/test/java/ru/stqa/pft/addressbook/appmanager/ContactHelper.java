@@ -2,11 +2,11 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.stqa.pft.addressbook.model.UserData;
+import ru.stqa.pft.addressbook.model.ContactData;
 
-public class UserHelper extends HelperBase {
+public class ContactHelper extends HelperBase {
 
-  public UserHelper(WebDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
@@ -18,16 +18,16 @@ public class UserHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillUserForm(UserData userData) {
-    type(By.name("firstname"), userData.getFirstName());
-    type(By.name("lastname"), userData.getLastName());
-    type(By.name("nickname"), userData.getNickName());
-    type(By.name("home"), userData.getPhoneHome());
-    type(By.name("email"), userData.getMailHome());
-    type(By.name("address2"), userData.getAddressHome());
+  public void fillContactForm(ContactData contactData) {
+    type(By.name("firstname"), contactData.getFirstName());
+    type(By.name("lastname"), contactData.getLastName());
+    type(By.name("nickname"), contactData.getNickName());
+    type(By.name("home"), contactData.getPhoneHome());
+    type(By.name("email"), contactData.getMailHome());
+    type(By.name("address2"), contactData.getAddressHome());
   }
 
-  public void initUserModification() {
+  public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 

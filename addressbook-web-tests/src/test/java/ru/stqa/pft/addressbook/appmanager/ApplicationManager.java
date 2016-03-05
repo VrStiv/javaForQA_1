@@ -16,7 +16,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
-  private UserHelper userHelper;
+  private ContactHelper contactHelper;
   private String browser;
 
   public ApplicationManager(String browser) {
@@ -36,7 +36,7 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://127.0.0.1:8080/addressbook/");
     groupHelper = new GroupHelper(wd);
-    userHelper = new UserHelper(wd);
+    contactHelper = new ContactHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
@@ -50,8 +50,8 @@ public class ApplicationManager {
     return groupHelper;
   }
 
-  public UserHelper getUserHelper() {
-    return userHelper;
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 
   public NavigationHelper getNavigationHelper() {
