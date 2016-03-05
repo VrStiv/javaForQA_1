@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,7 +21,7 @@ public class ApplicationManager {
 
   public ApplicationManager(String browser) {
     this.browser = browser;
-    System.out.println("Используется браузер " + browser );
+    System.out.println("Используется браузер " + browser);
   }
 
   public void init() {
@@ -43,7 +42,6 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-
   public void stop() {
     wd.quit();
   }
@@ -57,7 +55,6 @@ public class ApplicationManager {
   }
 
   public NavigationHelper getNavigationHelper() {
-
     return navigationHelper;
   }
 
