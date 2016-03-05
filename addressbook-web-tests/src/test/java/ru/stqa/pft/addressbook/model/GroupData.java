@@ -12,6 +12,7 @@ public class GroupData {
   }
 
   public String getName() {
+
     return name;
   }
 
@@ -20,6 +21,7 @@ public class GroupData {
   }
 
   public String getFooter() {
+
     return footer;
   }
 }
