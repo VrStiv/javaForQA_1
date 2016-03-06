@@ -58,11 +58,10 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public void gotoUserMainPage() {
+  public void gotoContactMainPage() {
     wd.findElement(By.linkText("home")).click();
   }
 
-  public void gotoAddUserPage() {
-    wd.findElement(By.linkText("add new")).click();
+  public void gotoAddUserPage() { wd.findElement(By.linkText("add new")).click();
   }
 }
