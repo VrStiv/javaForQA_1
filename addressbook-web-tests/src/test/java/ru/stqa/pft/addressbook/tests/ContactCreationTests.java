@@ -8,6 +8,7 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testUserCreation() {
     app.getNavigationHelper().gotoAddContactPage();
+    /* true в параметрах - для модификации, когда присутствует элемент "Group"*/
     app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
   }
 

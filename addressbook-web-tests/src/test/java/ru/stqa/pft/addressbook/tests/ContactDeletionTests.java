@@ -11,6 +11,7 @@ public class ContactDeletionTests extends TestBase {
     app.getNavigationHelper().gotoContactMainPage();
     if (!app.getContactHelper().isThereAConntact()) {
       app.getNavigationHelper().gotoAddContactPage();
+      /* true в параметрах - для модификации, когда отсутствует элемент "Group"*/
       app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
     }
     app.getContactHelper().initContactModification();
