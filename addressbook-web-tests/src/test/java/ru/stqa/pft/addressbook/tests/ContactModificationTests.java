@@ -9,6 +9,10 @@ public class ContactModificationTests extends TestBase {
   public void testUserModification() {
 
     app.getNavigationHelper().gotoContactMainPage();
+    if (!app.getContactHelper().isThereAConntact()) {
+      app.getNavigationHelper().gotoAddContactPage();
+      app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
+    }
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(new ContactData("Stasm", "Trubchanovm", "Vrstivm", "+3806777777799", "stasm.trubchanov@mail.ru", "Kharkiv", null), false);
     app.getContactHelper().modificationUser();
