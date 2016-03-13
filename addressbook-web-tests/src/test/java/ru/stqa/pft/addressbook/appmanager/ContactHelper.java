@@ -36,8 +36,17 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void deletionContact() {
+    click(By.xpath("//*[@id='content']/form[2]/div[2]/input"));
+    wd.switchTo().alert().accept();
+  }
+
   public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + 2 + "]/td[8]/a/img"));
   }
 
   public void deletionUser() {
@@ -57,8 +66,7 @@ public class ContactHelper extends HelperBase {
 
   /* Метод проверки наличия элемента для редактирования, для определения наличия контактов в списке */
   public boolean isThereAConntact() {
-    return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-
+    return isElementPresent(By.name("selected[]"));
   }
 
   public int getContactCount() {

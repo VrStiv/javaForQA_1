@@ -10,13 +10,13 @@ public class ContactModificationTests extends TestBase {
   public void testUserModification() {
 
     app.getNavigationHelper().gotoContactMainPage();
-    int before = app.getContactHelper().getContactCount();
     if (!app.getContactHelper().isThereAConntact()) {
       app.getNavigationHelper().gotoAddContactPage();
 
       /* true в параметрах - для модификации, когда присутствует элемент "Group"*/
       app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
     }
+    int before = app.getContactHelper().getContactCount();
     app.getContactHelper().initContactModification();
     /* null в параметрах - значение по умолчанию */
     /* false в параметрах - для модификации, когда отсутствует элемент "Group"*/
