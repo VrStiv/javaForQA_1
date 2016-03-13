@@ -10,10 +10,10 @@ public class ContactCreationTests extends TestBase {
   public void testUserCreation() {
     int before = app.getContactHelper().getContactCount();
     app.getNavigationHelper().gotoAddContactPage();
-    /* true в параметрах - для модификации, когда присутствует элемент "Group"*/
+    // true в параметрах - для модификации, когда присутствует элемент "Group"
     app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
     int after = app.getContactHelper().getContactCount();
-    /* Проверка наличия нового элемента */
+    // Проверка наличия нового элемента
     Assert.assertEquals(after, before + 1);
   }
 

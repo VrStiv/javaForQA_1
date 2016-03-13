@@ -13,13 +13,14 @@ public class ContactModificationTests extends TestBase {
     if (!app.getContactHelper().isThereAConntact()) {
       app.getNavigationHelper().gotoAddContactPage();
 
-      /* true в параметрах - для модификации, когда присутствует элемент "Group"*/
+      // true в параметрах - для модификации, когда присутствует элемент "Group"
       app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
     }
     int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().initContactModification();
-    /* null в параметрах - значение по умолчанию */
-    /* false в параметрах - для модификации, когда отсутствует элемент "Group"*/
+    // Параметр для первого элемента
+    app.getContactHelper().initContactModification(2);
+    // null в параметрах - значение по умолчанию
+    // false в параметрах - для модификации, когда отсутствует элемент "Group"
     app.getContactHelper().fillContactForm(new ContactData("Stasm", "Trubchanovm", "Vrstivm", "+3806777777799", "stasm.trubchanov@mail.ru", "Kharkiv", null), false);
     app.getContactHelper().modificationUser();
     app.getContactHelper().returnToMainPage();

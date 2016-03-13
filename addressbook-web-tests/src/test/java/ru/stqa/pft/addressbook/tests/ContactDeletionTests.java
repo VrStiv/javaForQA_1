@@ -12,12 +12,12 @@ public class ContactDeletionTests extends TestBase {
     app.getNavigationHelper().gotoContactMainPage();
     if (!app.getContactHelper().isThereAConntact()) {
       app.getNavigationHelper().gotoAddContactPage();
-      /* true в параметрах - для модификации, когда отсутствует элемент "Group"*/
+      // true в параметрах - для модификации, когда отсутствует элемент "Group"
       app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
     }
     int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().selectContact();
-    app.getContactHelper().deletionContact();
+    app.getContactHelper().selectContact(0);
+    app.getContactHelper().deletionContactButton();
     app.getNavigationHelper().gotoContactMainPage();
     int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after, before - 1);
