@@ -17,8 +17,8 @@ public class ContactModificationTests extends TestBase {
       app.getContactHelper().createContact(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
     }
     int before = app.getContactHelper().getContactCount();
-    // Параметр для первого элемента
-    app.getContactHelper().initContactModification(2);
+    // Параметр для выбора первого элемента (первый способ из лекции)
+    app.getContactHelper().initContactModification(before + 1);
     // null в параметрах - значение по умолчанию
     // false в параметрах - для модификации, когда отсутствует элемент "Group"
     app.getContactHelper().fillContactForm(new ContactData("Stasm", "Trubchanovm", "Vrstivm", "+3806777777799", "stasm.trubchanov@mail.ru", "Kharkiv", null), false);
