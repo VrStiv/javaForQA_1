@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +50,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void initContactModification(int indexOfXpath) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[" + indexOfXpath + "]/td[8]/a/img"));
-  }
-
-  public void deletionUser() {
-    click(By.xpath("//*[@id='content']/form[2]/input[2]"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + indexOfXpath + "]/td[8]//img"));
   }
 
   public void modificationUser() {
@@ -72,10 +67,6 @@ public class ContactHelper extends HelperBase {
   /* Метод проверки наличия элемента для редактирования, для определения наличия контактов в списке */
   public boolean isThereAConntact() {
     return isElementPresent(By.name("selected[]"));
-  }
-
-  public int getContactCount() {
-    return wd.findElements(By.name("selected[]")).size();
   }
 
   public List<ContactData> getContactList() {
