@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,10 +41,6 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-  }
-
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='"+ id + "']")).click();
   }
@@ -76,11 +71,6 @@ public class ContactHelper extends HelperBase {
     returnToMainPage();
   }
 
-  public void delete() {
-    selectContact(0);
-    deletionContactButton();
-  }
-
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deletionContactButton();
@@ -89,18 +79,6 @@ public class ContactHelper extends HelperBase {
   /* Метод проверки наличия элемента для редактирования, для определения наличия контактов в списке */
   public boolean isThereAConntact() {
     return isElementPresent(By.name("selected[]"));
-  }
-
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements) {
-      String firstName = element.findElement(By.xpath("./td[3]")).getText();
-      String lastName = element.findElement(By.xpath("./td[2]")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
-    }
-    return contacts;
   }
 
   public Set<ContactData> all() {

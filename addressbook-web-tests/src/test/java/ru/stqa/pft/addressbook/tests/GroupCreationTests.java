@@ -4,13 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
 public class GroupCreationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test (enabled = true)
   public void testGroupCreation() {
     app.goTo().groupPage();
     Set<GroupData> before = app.group().all();
