@@ -64,6 +64,13 @@ public class ContactHelper extends HelperBase {
     returnToMainPage();
   }
 
+  public void modyfyContact(ContactData contact) {
+    initContactModification();
+    fillContactForm(contact, false);
+    modificationUser();
+    returnToMainPage();
+  }
+
   /* Метод проверки наличия элемента для редактирования, для определения наличия контактов в списке */
   public boolean isThereAConntact() {
     return isElementPresent(By.name("selected[]"));
