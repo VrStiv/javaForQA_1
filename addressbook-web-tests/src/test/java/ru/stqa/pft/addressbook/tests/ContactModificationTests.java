@@ -15,7 +15,9 @@ public class ContactModificationTests extends TestBase {
     app.goTo().mainPage();
     if (app.contact().list().size() == 0) {
       app.goTo().addContactPage();
-      app.contact().create(new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1"), true);
+      app.contact().create(new ContactData()
+              .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
+              .withPhoneHome("+3806777777777").withMailHome("stas.trubchanov@mail.ru").withAddressHome("Kharkiv").withGroup("StasTest1"), true);
     }
   }
 
@@ -23,7 +25,9 @@ public class ContactModificationTests extends TestBase {
   public void testUserModification() {
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    ContactData contact = new ContactData(before.get(index).getId(), "Stasm", "Trubchanovm", "Vrstivm", "+3806777777777", "stasm.trubchanov@mail.ru", "Kharkiv", null);
+    ContactData contact = new ContactData()
+            .withId(before.get(index).getId()).withFirstName("Stasm").withLastName("Trubchanovm").withNickName("Vrstivm")
+            .withPhoneHome("+3806777777777").withMailHome("stasm.trubchanov@mail.ru").withAddressHome("Kharkiv");
     app.contact().modyfy(contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());

@@ -35,21 +35,12 @@ public class GroupData {
             '}';
   }
 
-  public int getId() {
-    return id;
-  }
-
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     GroupData groupData = (GroupData) o;
-
     return name != null ? name.equals(groupData.name) : groupData.name == null;
-
   }
 
   @Override
@@ -58,7 +49,6 @@ public class GroupData {
   }
 
   public String getName() {
-
     return name;
   }
 
@@ -67,7 +57,11 @@ public class GroupData {
   }
 
   public String getFooter() {
-
     return footer;
   }
+  public int getId() {
+    return id;
+  }
+
+
 }

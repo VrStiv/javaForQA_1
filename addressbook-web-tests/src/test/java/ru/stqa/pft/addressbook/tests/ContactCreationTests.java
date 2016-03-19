@@ -14,7 +14,9 @@ public class ContactCreationTests extends TestBase {
     List<ContactData> before = app.contact().list();
     app.goTo().addContactPage();
     // true в параметрах - для модификации, когда присутствует элемент "Group"
-    ContactData contact = new ContactData("Stas", "Trubchanov", "Vrstiv", "+3806777777777", "stas.trubchanov@mail.ru", "Kharkiv", "StasTest1");
+    ContactData contact = new ContactData()
+            .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
+            .withPhoneHome("+3806777777777").withMailHome("stas.trubchanov@mail.ru").withAddressHome("Kharkiv").withGroup("StasTest1");
     app.contact().create(contact, true);
     List<ContactData> after = app.contact().list();
     // Проверка наличия нового элемента
