@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
   public void testUserModification() {
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
-    ContactData contact = new ContactData(before.get(index).getId(), "Stasm", "Trubchanovm", "Vrstivm", "+3806777777799", "stasm.trubchanov@mail.ru", "Kharkiv", null);
+    ContactData contact = new ContactData(before.get(index).getId(), "Stasm", "Trubchanovm", "Vrstivm", "+3806777777777", "stasm.trubchanov@mail.ru", "Kharkiv", null);
     app.contact().modyfy(contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
