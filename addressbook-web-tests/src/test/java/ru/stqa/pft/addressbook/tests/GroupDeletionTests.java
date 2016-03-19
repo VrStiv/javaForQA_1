@@ -24,7 +24,6 @@ public class GroupDeletionTests extends TestBase {
     app.goTo().groupPage();
     Set<GroupData> before = app.group().all();
     GroupData deletedGroup = before.iterator().next();
-    /* Удаление последнего номера из списка*/
     app.group().delete(deletedGroup);
     Set<GroupData> after = app.group().all();
     Assert.assertEquals(after.size(), before.size() - 1);

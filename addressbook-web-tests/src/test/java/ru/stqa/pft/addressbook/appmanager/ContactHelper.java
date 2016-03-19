@@ -81,7 +81,7 @@ public class ContactHelper extends HelperBase {
     deletionContactButton();
   }
 
-  public void deletedContact (ContactData contact) {
+  public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deletionContactButton();
   }
@@ -113,8 +113,5 @@ public class ContactHelper extends HelperBase {
       contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
     }
     return contacts;
-  }
-
-  public void delete(ContactData deletedContact) {
   }
 }
