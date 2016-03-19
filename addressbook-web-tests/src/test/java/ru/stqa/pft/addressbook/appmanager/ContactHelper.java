@@ -57,18 +57,22 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//*[@id='content']/form[1]/input[22]"));
   }
 
-  /* Метод для создания нового контакта */
-  public void createContact(ContactData contact, boolean creation) {
+  public void create(ContactData contact, boolean creation) {
     fillContactForm(contact, creation);
     submitForm();
     returnToMainPage();
   }
 
-  public void modyfyContact(ContactData contact) {
+  public void modyfy(ContactData contact) {
     initContactModification();
     fillContactForm(contact, false);
     modificationUser();
     returnToMainPage();
+  }
+
+  public void delete() {
+    selectContact(0);
+    deletionContactButton();
   }
 
   /* Метод проверки наличия элемента для редактирования, для определения наличия контактов в списке */
@@ -76,7 +80,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
