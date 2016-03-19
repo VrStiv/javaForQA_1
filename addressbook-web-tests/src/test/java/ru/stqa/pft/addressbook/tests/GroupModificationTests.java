@@ -18,7 +18,7 @@ public class GroupModificationTests extends TestBase {
     }
   }
 
-  @Test
+  @Test (enabled = false)
   public void testGroupModificationTests() {
     app.goTo().groupPage();
     Set<GroupData> before = app.group().all();
