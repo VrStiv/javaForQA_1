@@ -23,7 +23,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void submitForm() {
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+    click(By.cssSelector("input[type ='submit']"));
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
@@ -47,16 +47,16 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deletionContactButton() {
-    click(By.xpath("//*[@id='content']/form[2]/div[2]/input"));
+    click(By.cssSelector("input[value ='Delete']"));
     wd.switchTo().alert().accept();
   }
 
   public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[last()]/td[8]//img"));
+    click(By.cssSelector("img[title ='Edit']"));
   }
 
   public void modificationUser() {
-    click(By.xpath("//*[@id='content']/form[1]/input[22]"));
+    click(By.cssSelector("input[value ='Update']"));
   }
 
   public void create(ContactData contact, boolean creation) {

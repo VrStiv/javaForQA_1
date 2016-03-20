@@ -35,8 +35,3 @@ public class ContactModificationTests extends TestBase {
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
 }
-
-
-// true в параметрах - для модификации, когда присутствует элемент "Group"
-// false в параметрах - для модификации, когда отсутствует элемент "Group"
-// null в параметрах - значение по умолчанию

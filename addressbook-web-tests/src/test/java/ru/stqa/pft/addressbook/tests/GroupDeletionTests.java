@@ -18,7 +18,6 @@ public class GroupDeletionTests extends TestBase {
     }
   }
 
-
   @Test(enabled = true)
   public void testGroupDeletion() {
 
@@ -30,5 +29,4 @@ public class GroupDeletionTests extends TestBase {
     assertEquals(after.size(), before.size() - 1);
     assertThat(after, equalTo(before.without(deletedGroup)));
   }
-
 }
