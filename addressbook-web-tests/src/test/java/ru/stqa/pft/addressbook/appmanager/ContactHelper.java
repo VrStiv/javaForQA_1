@@ -65,7 +65,7 @@ public class ContactHelper extends HelperBase {
     returnToMainPage();
   }
 
-  public void modyfy(ContactData contact) {
+  public void modyfy(ContactData contact, boolean creation) {
     initContactModification();
     fillContactForm(contact, false);
     modificationUser();
