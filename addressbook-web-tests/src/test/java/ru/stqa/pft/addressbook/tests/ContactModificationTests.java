@@ -18,17 +18,17 @@ public class ContactModificationTests extends TestBase {
       app.goTo().addContactPage();
       app.contact().create(new ContactData()
               .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
-              .withPhoneHome("+3806777777777").withMailHome("stas.trubchanov@mail.ru").withAddressHome("Kharkiv").withGroup("StasTest1"), true);
+              .withHomePhone("+3806777777777").withMailHome("stas.trubchanov@mail.ru").withAddressHome("Kharkiv").withGroup("StasTest1"), true);
     }
   }
 
   @Test (enabled = true)
-  public void testUserModification() {
+  public void testContactModification() {
     Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withFirstName("Stasm").withLastName("Trubchanovm").withNickName("Vrstivm")
-            .withPhoneHome("+3806777777777").withMailHome("stasm.trubchanov@mail.ru").withAddressHome("Kharkiv");
+            .withHomePhone("+3806777777777").withMailHome("stasm.trubchanov@mail.ru").withAddressHome("Kharkiv");
     app.contact().modyfy(contact, false);
     Contacts after = app.contact().all();
     assertEquals(after.size(), before.size());
