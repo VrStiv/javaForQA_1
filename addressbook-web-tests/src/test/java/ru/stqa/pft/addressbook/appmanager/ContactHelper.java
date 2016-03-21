@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"), contactData.getMobilePhone());
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getMailHome());
-    type(By.name("address2"), contactData.getAddressHome());
+    type(By.name("address"), contactData.getAddressHome());
 
     /* Проверка наличия поля "Group" */
     if (creation) {
