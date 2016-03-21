@@ -97,11 +97,11 @@ public class ContactHelper extends HelperBase {
       String firstName = element.findElement(By.xpath("./td[3]")).getText();
       String lastName = element.findElement(By.xpath("./td[2]")).getText();
       String allPhones = element.findElement(By.xpath("./td[6]")).getText();
-      //String[] phones = allPhones.split("\n");
+      String[] phones = allPhones.split("\n");
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contactCache.add(new ContactData()
               .withId(id).withFirstName(firstName).withLastName(lastName)
-              /*.withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]))*/);
+              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
     }
     return new Contacts(contactCache);
   }
@@ -109,7 +109,7 @@ public class ContactHelper extends HelperBase {
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
-    String lastname = wd.findElement(By.name("last")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
@@ -119,7 +119,6 @@ public class ContactHelper extends HelperBase {
             .withMobilePhone(mobilePhone).withWorkPhone(workPhone);
 
   }
-
   private void initContactModificationById(int id) {
     wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
   }
