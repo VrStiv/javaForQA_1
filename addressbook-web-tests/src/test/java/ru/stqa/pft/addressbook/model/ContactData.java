@@ -11,6 +11,13 @@ public class ContactData {
   private String mailHome;
   private String addressHome;
   private String group;
+  private String allPhones;
+
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public ContactData withAddressHome(String addressHome) {
     this.addressHome = addressHome;
@@ -126,7 +133,7 @@ public class ContactData {
 
   public String getMobilePhone() { return mobilePhone;  }
 
-  public int getId() {
-    return id;
-  }
+  public int getId() { return id;  }
+
+  public String getAllPhones() { return allPhones;  }
 }
