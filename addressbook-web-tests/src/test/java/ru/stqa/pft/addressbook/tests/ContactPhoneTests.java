@@ -12,16 +12,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactPhoneTests extends TestBase {
 
-  @BeforeMethod
-  public void ensurePreconditions() {
-    app.goTo().mainPage();
-    if (app.contact().all().size() == 0) {
-      app.goTo().addContactPage();
-      app.contact().create(new ContactData()
-              .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
-              .withHomePhone("+7(1111)").withMobilePhone("22-22").withWorkPhone("333")
-              .withMailHome("stas.trubchanov@mail.ru").withAddressHome("Kharkiv").withGroup("StasTest1"), true);
-    }
+  private String mergeMails(ContactData contact) {
+    return Arrays.asList(contact.getMail1())
+            .stream().filter((s) -> !s.equals(""))
+            .map(ContactPhoneTests::cleanedMails)
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String cleanedMails(String mail){
+    return mail.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
   private String mergePhones(ContactData contact) {
@@ -42,10 +41,21 @@ public class ContactPhoneTests extends TestBase {
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleanedAddress(String phone){
-    return phone.replaceAll("[-()]", "");
+  public static String cleanedAddress(String address){
+    return address.replaceAll("[-()]", "");
   }
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().mainPage();
+    if (app.contact().all().size() == 0) {
+      app.goTo().addContactPage();
+      app.contact().create(new ContactData()
+              .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
+              .withHomePhone("+7(1111)").withMobilePhone("22-22").withWorkPhone("333")
+              .withMail1("stas.trubchanov@mail.ru").withAddressHome("Kharkiv 35, Flat 14").withGroup("StasTest1"), true);
+    }
+  }
 
   @Test(enabled = true)
   public void testContactPhones() {
@@ -53,6 +63,7 @@ public class ContactPhoneTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAddressHome(), equalTo(mergeAddress(contactInfoFromEditForm)));
+    assertThat(contact.getMail1(), equalTo(mergeMails(contactInfoFromEditForm)));
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
   }
 
