@@ -121,9 +121,7 @@ public class ContactData {
     return mailHome;
   }
 
-  public String getAddressHome() {
-    return addressHome;
-  }
+  public String getAddressHome() {return addressHome; }
 
   public String getGroup() {
     return group;

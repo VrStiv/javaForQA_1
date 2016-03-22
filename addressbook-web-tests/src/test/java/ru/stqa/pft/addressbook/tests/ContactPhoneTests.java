@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Arrays;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -25,15 +24,6 @@ public class ContactPhoneTests extends TestBase {
     }
   }
 
-  @Test(enabled = true)
-  public void testContactPhones() {
-    app.goTo().mainPage();
-    ContactData contact = app.contact().all().iterator().next();
-    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
-
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-  }
-
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
     .stream().filter((s) -> !s.equals(""))
@@ -45,6 +35,25 @@ public class ContactPhoneTests extends TestBase {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
+  private String mergeAddress(ContactData contact) {
+    return Arrays.asList(contact.getAddressHome())
+            .stream().filter((s) -> !s.equals(""))
+            .map(ContactPhoneTests::cleanedAddress)
+            .collect(Collectors.joining("\n"));
+  }
 
+  public static String cleanedAddress(String phone){
+    return phone.replaceAll("[-()]", "");
+  }
+
+
+  @Test(enabled = true)
+  public void testContactPhones() {
+    app.goTo().mainPage();
+    ContactData contact = app.contact().all().iterator().next();
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    assertThat(contact.getAddressHome(), equalTo(mergeAddress(contactInfoFromEditForm)));
+    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+  }
 
 }

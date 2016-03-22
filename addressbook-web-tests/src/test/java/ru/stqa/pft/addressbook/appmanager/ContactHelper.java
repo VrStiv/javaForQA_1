@@ -96,10 +96,11 @@ public class ContactHelper extends HelperBase {
     for (WebElement element : elements) {
       String firstName = element.findElement(By.xpath("./td[3]")).getText();
       String lastName = element.findElement(By.xpath("./td[2]")).getText();
+      String addressHome = element.findElement(By.xpath("./td[4]")).getText();
       String allPhones = element.findElement(By.xpath("./td[6]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contactCache.add(new ContactData()
-              .withId(id).withFirstName(firstName).withLastName(lastName)
+              .withId(id).withFirstName(firstName).withLastName(lastName).withAddressHome(addressHome)
               .withAllPhones(allPhones));
     }
     return new Contacts(contactCache);
@@ -112,10 +113,11 @@ public class ContactHelper extends HelperBase {
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+    String addressHome = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new ContactData()
-            .withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomePhone(homePhone)
-            .withMobilePhone(mobilePhone).withWorkPhone(workPhone);
+            .withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withAddressHome(addressHome)
+            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
 
   }
   private void initContactModificationById(int id) {
