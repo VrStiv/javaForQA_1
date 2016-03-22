@@ -10,23 +10,18 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactPhoneTests extends TestBase {
+public class ContactPhoneMailAddressTests extends TestBase {
 
   private String mergeMails(ContactData contact) {
-    return Arrays.asList(contact.getMail1())
+    return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
             .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleanedMails)
             .collect(Collectors.joining("\n"));
-  }
-
-  public static String cleanedMails(String mail){
-    return mail.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
     .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleaned)
+            .map(ContactPhoneMailAddressTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
@@ -37,7 +32,7 @@ public class ContactPhoneTests extends TestBase {
   private String mergeAddress(ContactData contact) {
     return Arrays.asList(contact.getAddressHome())
             .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneTests::cleanedAddress)
+            .map(ContactPhoneMailAddressTests::cleanedAddress)
             .collect(Collectors.joining("\n"));
   }
 
@@ -53,7 +48,8 @@ public class ContactPhoneTests extends TestBase {
       app.contact().create(new ContactData()
               .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
               .withHomePhone("+7(1111)").withMobilePhone("22-22").withWorkPhone("333")
-              .withMail1("stas.trubchanov@mail.ru").withAddressHome("Kharkiv 35, Flat 14").withGroup("StasTest1"), true);
+              .withMail("stas.trubchanov@mil.ru").withMail2("stas.trub@ail.ru").withMail3("stas.anov@mai.ru")
+              .withAddressHome("Kharkiv 35, Flat 14").withGroup("StasTest1"), true);
     }
   }
 
@@ -63,7 +59,7 @@ public class ContactPhoneTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAddressHome(), equalTo(mergeAddress(contactInfoFromEditForm)));
-    assertThat(contact.getMail1(), equalTo(mergeMails(contactInfoFromEditForm)));
+    assertThat(contact.getAllMails(), equalTo(mergeMails(contactInfoFromEditForm)));
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
   }
 
