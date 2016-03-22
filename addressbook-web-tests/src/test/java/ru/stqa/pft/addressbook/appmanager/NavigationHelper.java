@@ -29,5 +29,4 @@ public class NavigationHelper extends HelperBase {
     wd.findElement(By.linkText("add new")).click();
   }
 
-
 }

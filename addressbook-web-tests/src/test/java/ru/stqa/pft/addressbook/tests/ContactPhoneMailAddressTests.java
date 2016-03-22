@@ -48,7 +48,7 @@ public class ContactPhoneMailAddressTests extends TestBase {
     }
   }
 
-  @Test(enabled = true)
+  @Test(enabled = false)
   public void testContactPhones() {
     app.goTo().mainPage();
     ContactData contact = app.contact().all().iterator().next();
@@ -58,4 +58,23 @@ public class ContactPhoneMailAddressTests extends TestBase {
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
   }
 
+  @Test(enabled = true)
+  public void testContactDetails() {
+    app.goTo().mainPage();
+    ContactData contact = app.contact().all().iterator().next();
+    ContactData contactInfoFromDetailForm = app.contact().infoFromDetailForm(contact);
+    assertThat(contact.getAllMails(), equalTo(mergeDetailsPage(contactInfoFromDetailForm)));
+
+  }
+
+  private String mergeDetailsPage(ContactData contact) {
+    return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
+            .stream().filter((s) -> !s.equals(""))
+            .map(ContactPhoneMailAddressTests::cleanedSecondPage)
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String cleanedSecondPage(String mails){
+    return mails.replaceAll("\\s", "").replaceAll("[-()]", "");
+  }
 }

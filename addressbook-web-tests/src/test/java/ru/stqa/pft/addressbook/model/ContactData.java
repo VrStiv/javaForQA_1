@@ -130,9 +130,7 @@ public class ContactData {
     return nickName;
   }
 
-  public String getHomePhone() {
-    return homePhone;
-  }
+  public String getHomePhone() { return homePhone;  }
 
   public String getMail() { return mail;  }
 
@@ -152,7 +150,7 @@ public class ContactData {
 
   public String getMail2() {return mail2;  }
 
-  public String getAllMails() {    return allMails;  }
+  public String getAllMails() { return allMails;  }
 
-  public String getMail3() {    return mail3;  }
+  public String getMail3() { return mail3;  }
 }
