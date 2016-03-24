@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -14,12 +15,12 @@ public class ContactPhoneMailAddressTests extends TestBase {
 
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-    .stream().filter((s) -> !s.equals(""))
+            .stream().filter((s) -> !s.equals(""))
             .map(ContactPhoneMailAddressTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
-  public static String cleaned(String phone){
+  public static String cleaned(String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
@@ -43,12 +44,12 @@ public class ContactPhoneMailAddressTests extends TestBase {
       app.contact().create(new ContactData()
               .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
               .withHomePhone("+7(1111)").withMobilePhone("22-22").withWorkPhone("333")
-              .withMail("stas.trubchanov@mil.ru").withMail2("stas.trub@ail.ru").withMail3("stas.anov@mai.ru")
+              .withMail("stas.trubchanov@mail.ru").withMail2("stas.trub@mail.ru").withMail3("stas.anov@mail.ru")
               .withAddressHome("Kharkiv-35, (Flat 14)").withGroup("StasTest1"), true);
     }
   }
 
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testContactPhones() {
     app.goTo().mainPage();
     ContactData contact = app.contact().all().iterator().next();
@@ -62,19 +63,30 @@ public class ContactPhoneMailAddressTests extends TestBase {
   public void testContactDetails() {
     app.goTo().mainPage();
     ContactData contact = app.contact().all().iterator().next();
-    ContactData contactInfoFromDetailForm = app.contact().infoFromDetailForm(contact);
-    assertThat(contact.getAllMails(), equalTo(mergeDetailsPage(contactInfoFromDetailForm)));
-
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    WebElement contactInfoFromDetailForm = app.contact().infoFromDetailForm(contact);
+    String contactInf = cleaned(contactInfoFromDetailForm);
+    String contactFromEdit = mergeContactInfo(contactInfoFromEditForm);
+    assertThat(contactInf, equalTo(contactFromEdit));
   }
 
-  private String mergeDetailsPage(ContactData contact) {
-    return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
+  private String mergeContactInfo(ContactData contact) {
+    return Arrays.asList(contact.getFirstName(), contact.getMiddleName(), contact.getLastName(), contact.getNickName(),
+             contact.getAddressHome(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
+             contact.getMail(), contact.getMail2(), contact.getMail3())
             .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneMailAddressTests::cleanedSecondPage)
-            .collect(Collectors.joining("\n"));
+            .map(ContactPhoneMailAddressTests::cleanedDetails)
+            .collect(Collectors.joining(""));
   }
 
-  public static String cleanedSecondPage(String mails){
+  private String cleaned(WebElement contactInfoFromDetailForm) {
+    String contact = contactInfoFromDetailForm.getText().replaceAll("[-()]", "").replace("www.mail.ru", "").replace("H:", "")
+            .replace("M:", "").replace("W:", "").replace(" ", "").replace("\n", "").replace(" ", "");
+    return contact;
+  }
+
+  public static String cleanedDetails(String mails) {
     return mails.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
+
 }

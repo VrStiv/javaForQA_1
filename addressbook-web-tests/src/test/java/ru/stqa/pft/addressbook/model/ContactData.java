@@ -14,7 +14,22 @@ public class ContactData {
   private String addressHome;
   private String group;
   private String allPhones;
+  private String details;
   private String allMails;
+
+
+
+  public ContactData withMiddleName(String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  private String middleName;
+
+  public ContactData withDetails(String details) {
+    this.details = details;
+    return this;
+  }
 
   public ContactData withAllMails(String allMails) {
     this.allMails = allMails;
@@ -118,6 +133,8 @@ public class ContactData {
             '}';
   }
 
+  public int getId() { return id;  }
+
   public String getFirstName() {
     return firstName;
   }
@@ -144,8 +161,6 @@ public class ContactData {
 
   public String getMobilePhone() { return mobilePhone;  }
 
-  public int getId() { return id;  }
-
   public String getAllPhones() { return allPhones;  }
 
   public String getMail2() {return mail2;  }
@@ -153,4 +168,8 @@ public class ContactData {
   public String getAllMails() { return allMails;  }
 
   public String getMail3() { return mail3;  }
+
+  public String getDetails() {return details;  }
+
+  public String getMiddleName() {return middleName; }
 }

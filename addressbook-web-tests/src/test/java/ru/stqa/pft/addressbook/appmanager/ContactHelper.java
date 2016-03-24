@@ -112,7 +112,9 @@ public class ContactHelper extends HelperBase {
   public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String middlename = wd.findElement(By.name("middlename")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
@@ -122,29 +124,28 @@ public class ContactHelper extends HelperBase {
     String mail3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactData()
-            .withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withAddressHome(addressHome)
-            .withMail(mail).withMail2(mail2).withMail3(mail3)
-            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
+            .withId(contact.getId()).withFirstName(firstname).withMiddleName(middlename).withLastName(lastname)
+            .withNickName(nickname).withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone)
+            .withAddressHome(addressHome).withMail(mail).withMail2(mail2).withMail3(mail3);
+
 
   }
   private void initContactModificationById(int id) {
     wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
   }
 
-  public ContactData infoFromDetailForm(ContactData contact) {
-    initContactDetailsById(contact.getId());
-    //String firstname = wd.findElement(By.id("content")).getText();
-    String mail = wd.findElement(By.xpath("//*[@id='content']/a[1]")).getText();
-    String mail2 = wd.findElement(By.xpath("//*[@id='content']/a[3]")).getText();
-    String mail3 = wd.findElement(By.xpath("//*[@id='content']/a[5]")).getText();
-    wd.navigate().back();
-    return new ContactData()
-            .withId(contact.getId()).withMail(mail).withMail2(mail2).withMail3(mail3);
-  }
-
   private void initContactDetailsById(int id) {
     wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
   }
+
+
+  public WebElement infoFromDetailForm(ContactData contact) {
+    initContactDetailsById(contact.getId());
+    WebElement element = wd.findElement(By.xpath("//*[@id='content']"));
+    return element;
+  }
+
+
 
 
 
