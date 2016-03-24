@@ -13,28 +13,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactPhoneMailAddressTests extends TestBase {
 
-  private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter((s) -> !s.equals(""))
-            .map(ContactPhoneMailAddressTests::cleaned)
-            .collect(Collectors.joining("\n"));
-  }
-
-  public static String cleaned(String phone) {
-    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
-  }
-
-  private String mergeMails(ContactData contact) {
-    return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
-            .stream().filter((s) -> !s.equals(""))
-            .collect(Collectors.joining("\n"));
-  }
-
-  private String mergeAddress(ContactData contact) {
-    return Arrays.asList(contact.getAddressHome())
-            .stream().filter((s) -> !s.equals(""))
-            .collect(Collectors.joining("\n"));
-  }
 
   @BeforeMethod
   public void ensurePreconditions() {
@@ -72,8 +50,8 @@ public class ContactPhoneMailAddressTests extends TestBase {
 
   private String mergeContactInfo(ContactData contact) {
     return Arrays.asList(contact.getFirstName(), contact.getMiddleName(), contact.getLastName(), contact.getNickName(),
-             contact.getAddressHome(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
-             contact.getMail(), contact.getMail2(), contact.getMail3())
+            contact.getAddressHome(), contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(),
+            contact.getMail(), contact.getMail2(), contact.getMail3())
             .stream().filter((s) -> !s.equals(""))
             .map(ContactPhoneMailAddressTests::cleanedDetails)
             .collect(Collectors.joining(""));
@@ -81,12 +59,36 @@ public class ContactPhoneMailAddressTests extends TestBase {
 
   private String cleaned(WebElement contactInfoFromDetailForm) {
     String contact = contactInfoFromDetailForm.getText().replaceAll("[-()]", "").replace("www.mail.ru", "")
-            .replace("H:", "").replace("M:", "").replace("W:", "").replace(" ", "").replace("\n", "").replace("Memberof:Notice:Undefinedvariable:page_ext_qryinC:\\xampp\\htdocs\\addressbook\\include\\view.w.phponline189StasTest1", "");
+            .replace("H:", "").replace("M:", "").replace("W:", "").replace(" ", "").replace("\n", "").replace(" ", "");
     return contact;
   }
 
   public static String cleanedDetails(String mails) {
     return mails.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
+
+  private String mergePhones(ContactData contact) {
+    return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
+            .stream().filter((s) -> !s.equals(""))
+            .map(ContactPhoneMailAddressTests::cleaned)
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String cleaned(String phone) {
+    return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+  }
+
+  private String mergeMails(ContactData contact) {
+    return Arrays.asList(contact.getMail(), contact.getMail2(), contact.getMail3())
+            .stream().filter((s) -> !s.equals(""))
+            .collect(Collectors.joining("\n"));
+  }
+
+  private String mergeAddress(ContactData contact) {
+    return Arrays.asList(contact.getAddressHome())
+            .stream().filter((s) -> !s.equals(""))
+            .collect(Collectors.joining("\n"));
+  }
+
 
 }
