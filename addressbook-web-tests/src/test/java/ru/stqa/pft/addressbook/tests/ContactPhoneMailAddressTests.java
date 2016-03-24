@@ -80,8 +80,8 @@ public class ContactPhoneMailAddressTests extends TestBase {
   }
 
   private String cleaned(WebElement contactInfoFromDetailForm) {
-    String contact = contactInfoFromDetailForm.getText().replaceAll("[-()]", "").replace("www.mail.ru", "").replace("H:", "")
-            .replace("M:", "").replace("W:", "").replace(" ", "").replace("\n", "").replace(" ", "");
+    String contact = contactInfoFromDetailForm.getText().replaceAll("[-()]", "").replace("www.mail.ru", "")
+            .replace("H:", "").replace("M:", "").replace("W:", "").replace(" ", "").replace("\n", "").replace("Memberof:Notice:Undefinedvariable:page_ext_qryinC:\\xampp\\htdocs\\addressbook\\include\\view.w.phponline189StasTest1", "");
     return contact;
   }
 

@@ -141,7 +141,7 @@ public class ContactHelper extends HelperBase {
 
   public WebElement infoFromDetailForm(ContactData contact) {
     initContactDetailsById(contact.getId());
-    WebElement element = wd.findElement(By.xpath("//*[@id='content']"));
+    WebElement element = wd.findElement(By.xpath(".//*[@id='content']"));
     return element;
   }
 
