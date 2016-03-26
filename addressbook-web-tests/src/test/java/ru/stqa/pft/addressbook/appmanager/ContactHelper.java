@@ -35,6 +35,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getMail2());
     type(By.name("email3"), contactData.getMail3());
     type(By.name("address"), contactData.getAddressHome());
+    attach(By.name("photo"), contactData.getPhoto());
 
     /* Проверка наличия поля "Group" */
     if (creation) {
@@ -70,7 +71,7 @@ public class ContactHelper extends HelperBase {
 
   public void modyfy(ContactData contact, boolean creation) {
     initContactModification();
-    fillContactForm(contact, false);
+    fillContactForm(contact, creation);
     modificationUser();
     contactCache = null;
     returnToMainPage();
