@@ -111,7 +111,6 @@ public class ContactData {
     if (id != that.id) return false;
     if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
     return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
-
   }
 
   @Override
@@ -126,7 +125,6 @@ public class ContactData {
   public String toString() {
     return "ContactData{" +
             "id='" + id + '\'' +
-
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             '}';
