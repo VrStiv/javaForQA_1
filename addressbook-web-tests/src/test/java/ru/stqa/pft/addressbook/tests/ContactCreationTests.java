@@ -19,7 +19,7 @@ public class ContactCreationTests extends TestBase {
     ContactData contact = new ContactData()
             .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
             .withHomePhone("111").withMobilePhone("222").withWorkPhone("333").withMail("stas.trubchanov@mail.ru")
-            .withAddressHome("Kharkiv").withPhoto(photo);
+            .withAddressHome("Kharkiv").withPhoto(photo).withGroup("StasTest1");
     app.contact().create(contact, true);
     Contacts after = app.contact().all();
     // Проверка наличия нового элемента
