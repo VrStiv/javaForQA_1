@@ -14,16 +14,22 @@ public class ContactData {
   private String firstName;
   @Expose
   private String lastName;
-  @Expose
   private String middleName;
+  @Expose
   private String nickName;
+  @Expose
   private String homePhone;
+  @Expose
   private String mobilePhone;
+  @Expose
   private String workPhone;
+  @Expose
   private String mail;
   private String mail2;
   private String mail3;
+  @Expose
   private String addressHome;
+  @Expose
   private String group;
   private String allPhones;
   private String allMails;

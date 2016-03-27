@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -65,7 +64,8 @@ public class ContactdataGenerator {
     System.out.println(new File(".").getAbsolutePath());
     Writer writer = new FileWriter(file);
     for (ContactData contact: groups){
-      writer.write(String.format("%s;%s;%s\n", contact.getFirstName(), contact.getLastName(), contact.getMiddleName()));
+      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;\n", contact.getFirstName(), contact.getLastName(), contact.getNickName(),
+              contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(), contact.getAddressHome(), contact.getGroup()));
     }
     writer.close();
   }
@@ -79,12 +79,13 @@ public class ContactdataGenerator {
   }
 
   private List<ContactData> generateContacts(int count) {
-    List<ContactData> groups = new ArrayList<ContactData>();
+    List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++){
-      groups.add(new ContactData().withFirstName(String.format("test %s", i))
-              .withLastName(String.format("header %s", i)).withMiddleName(String.format("footer %s", i)));
+      contacts.add(new ContactData().withFirstName(String.format("Stas %s", i)).withLastName(String.format("Trubchanov %s", i))
+              .withNickName(String.format("Vrstiv %s", i)).withHomePhone(String.format("8793%s4312", i)).withMobilePhone(String.format("234%s233", i))
+              .withWorkPhone(String.format("32423%s23423", i)).withAddressHome(String.format("Kharkiv%s", i)).withGroup(String.format("StasTest1", i)) );
     }
-    return groups;
+    return contacts;
   }
 
 

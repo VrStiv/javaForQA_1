@@ -1,17 +1,32 @@
 [
   {
-    "firstName": "test 0",
-    "lastName": "header 0",
-    "middleName": "footer 0"
+    "firstName": "Stas 0",
+    "lastName": "Trubchanov 0",
+    "nickName": "Vrstiv 0",
+    "homePhone": "879304312",
+    "mobilePhone": "2340233",
+    "workPhone": "32423023423",
+    "addressHome": "Kharkiv0",
+    "group": "StasTest1"
   },
   {
-    "firstName": "test 1",
-    "lastName": "header 1",
-    "middleName": "footer 1"
+    "firstName": "Stas 1",
+    "lastName": "Trubchanov 1",
+    "nickName": "Vrstiv 1",
+    "homePhone": "879314312",
+    "mobilePhone": "2341233",
+    "workPhone": "32423123423",
+    "addressHome": "Kharkiv1",
+    "group": "StasTest1"
   },
   {
-    "firstName": "test 2",
-    "lastName": "header 2",
-    "middleName": "footer 2"
+    "firstName": "Stas 2",
+    "lastName": "Trubchanov 2",
+    "nickName": "Vrstiv 2",
+    "homePhone": "879324312",
+    "mobilePhone": "2342233",
+    "workPhone": "32423223423",
+    "addressHome": "Kharkiv2",
+    "group": "StasTest1"
   }
 ]
