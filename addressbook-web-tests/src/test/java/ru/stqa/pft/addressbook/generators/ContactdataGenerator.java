@@ -62,12 +62,12 @@ public class ContactdataGenerator {
 
   private void saveAsCsv(List<ContactData> groups, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
-    for (ContactData contact: groups){
-      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;\n", contact.getFirstName(), contact.getLastName(), contact.getNickName(),
-              contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(), contact.getAddressHome(), contact.getGroup()));
+    try (Writer writer = new FileWriter(file)) {
+      for (ContactData contact : groups) {
+        writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;\n", contact.getFirstName(), contact.getLastName(), contact.getNickName(),
+                contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone(), contact.getAddressHome(), contact.getGroup()));
+      }
     }
-    writer.close();
   }
 
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
