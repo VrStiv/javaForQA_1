@@ -83,7 +83,7 @@ public class ContactdataGenerator {
     for (int i = 0; i < count; i++){
       contacts.add(new ContactData().withFirstName(String.format("Stas %s", i)).withLastName(String.format("Trubchanov %s", i))
               .withNickName(String.format("Vrstiv %s", i)).withHomePhone(String.format("8793%s4312", i)).withMobilePhone(String.format("234%s233", i))
-              .withWorkPhone(String.format("32423%s23423", i)).withAddressHome(String.format("Kharkiv%s", i)).withGroup(String.format("StasTest1", i)) );
+              .withWorkPhone(String.format("32423%s23423", i)).withAddressHome(String.format("Kharkiv%s", i)).withGroup(String.format("StasTest1")) );
     }
     return contacts;
   }
