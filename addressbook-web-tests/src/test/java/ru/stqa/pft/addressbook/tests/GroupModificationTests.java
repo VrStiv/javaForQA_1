@@ -16,7 +16,6 @@ public class GroupModificationTests extends TestBase {
     if (app.db().groups().size() == 0) {
       app.goTo().groupPage();
       app.group().create(new GroupData().withName("StasTest1"));
-
     }
   }
 
