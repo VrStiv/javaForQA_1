@@ -8,25 +8,5 @@
     "workPhone": "32423023423",
     "addressHome": "Kharkiv0",
     "group": "StasTest1"
-  },
-  {
-    "firstName": "Stas 1",
-    "lastName": "Trubchanov 1",
-    "nickName": "Vrstiv 1",
-    "homePhone": "879314312",
-    "mobilePhone": "2341233",
-    "workPhone": "32423123423",
-    "addressHome": "Kharkiv1",
-    "group": "StasTest1"
-  },
-  {
-    "firstName": "Stas 2",
-    "lastName": "Trubchanov 2",
-    "nickName": "Vrstiv 2",
-    "homePhone": "879324312",
-    "mobilePhone": "2342233",
-    "workPhone": "32423223423",
-    "addressHome": "Kharkiv2",
-    "group": "StasTest1"
   }
 ]

@@ -212,6 +212,10 @@ public class ContactData {
 
   public String getMiddleName() {return middleName; }
 
-  public File getPhoto() { return new File(photo);
+  public File getPhoto() {
+    if(photo != null) {
+      return new File(photo);
+    }
+    return null;
   }
 }
