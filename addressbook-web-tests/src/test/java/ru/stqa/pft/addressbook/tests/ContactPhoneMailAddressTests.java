@@ -22,7 +22,7 @@ public class ContactPhoneMailAddressTests extends TestBase {
               .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
               .withHomePhone("+7(1111)").withMobilePhone("22-22").withWorkPhone("333")
               .withMail("stas.trubchanov@mail.ru").withMail2("stas.trub@mail.ru").withMail3("stas.anov@mail.ru")
-              .withAddressHome("Kharkiv-35, (Flat 14)").withGroup("StasTest1"), true);
+              .withAddressHome("Kharkiv-35, (Flat 14)"), true);
     }
   }
 

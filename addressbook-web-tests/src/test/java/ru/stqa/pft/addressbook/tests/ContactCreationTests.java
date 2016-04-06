@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -51,16 +52,22 @@ public class ContactCreationTests extends TestBase {
     return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
   }
 
-    @Test(dataProvider = "validContactsFromJson")
+  @Test(dataProvider = "validContactsFromJson")
   public void testUserCreation(ContactData contact) {
+    Groups groups = app.db().groups();
     Contacts before = app.db().contacts();
+    ContactData newContact = new ContactData()
+            .withFirstName("Stas").withLastName("Trubchanov").withNickName("Vrstiv")
+            .withHomePhone("111").withMobilePhone("222").withWorkPhone("333")
+            .withMail("stas.trubchanov@mail.ru").withAddressHome("Kharkiv")
+            .inGroup(groups.iterator().next());
     app.goTo().addContactPage();
-    app.contact().create(contact, true);
+    app.contact().create(newContact, true);
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-      verifyContactListInUI();
+    verifyContactListInUI();
   }
 /* Проверка наличия файла
   @Test
