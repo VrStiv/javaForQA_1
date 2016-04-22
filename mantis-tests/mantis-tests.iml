@@ -76,5 +76,8 @@
     <orderEntry type="library" name="Gradle: commons-discovery:commons-discovery:0.2" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.axis:axis-jaxrpc:1.4" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.axis:axis-saaj:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.1.0.Final" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.38" level="project" />
   </component>
 </module>

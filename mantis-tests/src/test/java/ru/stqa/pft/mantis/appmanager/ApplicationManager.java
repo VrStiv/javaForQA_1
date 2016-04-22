@@ -22,6 +22,9 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private SoapHelper soapHelper;
+  private NavigationHelper navigationHelper;
+  private DbHelper dbHelper;
+  private ChangePassword authorization;
 
 
   public ApplicationManager(String browser) {
@@ -87,9 +90,27 @@ public class ApplicationManager {
   }
 
   public SoapHelper soap() {
-    if (soapHelper == null){
+    if (soapHelper == null) {
       soapHelper = new SoapHelper(this);
     }
     return soapHelper;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
+  }
+
+  public NavigationHelper goTo() throws Exception {
+    if (navigationHelper == null) {
+      navigationHelper = new NavigationHelper(this);
+    }
+    return navigationHelper;
+  }
+
+  public ChangePassword changePassword() throws Exception {
+    if (authorization == null) {
+      authorization = new ChangePassword(this);
+    }
+    return authorization;
   }
 }
