@@ -1,7 +1,10 @@
 package ru.stqa.pft.rest;/* Created by Vrstiv on 24.04.2016  */
 
 public class Issue {
-    private int id;
+  private int id;
+  private String subject;
+  private String description;
+  private String name;
 
   public int getId() {
     return id;
@@ -35,7 +38,6 @@ public class Issue {
     if (id != issue.id) return false;
     if (subject != null ? !subject.equals(issue.subject) : issue.subject != null) return false;
     return description != null ? description.equals(issue.description) : issue.description == null;
-
   }
 
   @Override
@@ -49,9 +51,14 @@ public class Issue {
   public Issue withDescription(String description) {
     this.description = description;
     return this;
-
   }
 
-  private String subject;
-    private String description;
+  public String getStatus() {
+    return name;
+  }
+
+  public Issue whitStatus(String name) {
+    this.name = name;
+    return this;
+  }
 }
