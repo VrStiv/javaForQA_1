@@ -2,13 +2,14 @@ apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "ru.stqa.javaForQA_1.sendbox.MyFirstProgram"
 
-repositories{
+repositories {
     mavenCentral()
 }
 
-dependencies{
+dependencies {
     compile 'org.testng:testng:6.9.10'
 }
 
+test {
+    useTestNG()
 }
-
